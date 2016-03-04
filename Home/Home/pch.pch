@@ -1,0 +1,24 @@
+//
+//  pch.pch
+//  Home
+//
+//  Created by scjy on 16/3/3.
+//  Copyright © 2016年 scjy. All rights reserved.
+//
+
+#ifndef pch_pch
+#define pch_pch
+#define kColor [UIColor colorWithRed:100/255.0f green:199/255.0f blue:250/255.0f alpha:1.0];
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+#import "NetworkList.h"
+#import "LHTools.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef DEBUG
+#	define ZLLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#	define ZLLog(...)
+#endif
+
+#endif /* pch_pch */

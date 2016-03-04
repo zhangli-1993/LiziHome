@@ -1,0 +1,71 @@
+{
+code = 200;
+data =     {
+banners =         (
+{
+channel = all;
+id = 21;
+"image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/151104/69t9ogkgl.jpg-w720";
+order = 3;
+status = 0;
+target =                 {
+"banner_image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/151104/s8a68uk0k.jpg-w300";
+"cover_image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/151104/84zzlpbwy.jpg-w720";
+"created_at" = 1446627781;
+id = 19;
+"posts_count" = 3;
+status = 0;
+subtitle = "<null>";
+title = "\U6ca1\U4eba\U80fd\U591f\U62d2\U7edd\U7684zakka\U98ce\U5bb6\U5c45";
+"updated_at" = 1446627781;
+};
+"target_id" = 19;
+"target_url" = "";
+type = collection;
+},
+{
+channel = all;
+id = 20;
+"image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/151021/cyfzg8sez.jpg-w720";
+order = 2;
+status = 0;
+target =                 {
+"banner_image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/151021/m3opau3ie.jpg-w300";
+"cover_image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/151021/3jkbn7c2g.jpg-w720";
+"created_at" = 1445392601;
+id = 18;
+"posts_count" = 7;
+status = 0;
+subtitle = "\U53cc11";
+title = "\U53cc11\U4ec0\U4e48\U503c\U5f97\U4e70\U7b2c\U4e00\U5f39";
+"updated_at" = 1445392601;
+};
+"target_id" = 18;
+"target_url" = "";
+type = collection;
+},
+{
+channel = all;
+id = 16;
+"image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150915/kujwzvjc4.jpg-w720";
+order = 1;
+status = 0;
+target =                 {
+"banner_image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150915/g6rypaa28.jpg-w300";
+"cover_image_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150915/5l5vb5vxf.jpg-w720";
+"created_at" = 1442282892;
+id = 14;
+"posts_count" = 4;
+status = 0;
+subtitle = "\U795e\U5947\U7684\U65b0\U6280\U80fd";
+title = "\U7f8e\U5473\U53a8\U623f";
+"updated_at" = 1442282892;
+};
+"target_id" = 14;
+"target_url" = "";
+type = collection;
+}
+);
+};
+message = OK;
+}
