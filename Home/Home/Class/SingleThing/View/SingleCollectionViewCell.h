@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "SingleModel.h"
 @interface SingleCollectionViewCell : UICollectionViewCell
-@property (nonatomic, strong) SingleModel *model;
+@property (nonatomic, strong)SingleModel *model;
 @end

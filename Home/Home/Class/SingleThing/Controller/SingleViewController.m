@@ -22,7 +22,24 @@
     [super viewDidLoad];
     self.title = @"单品";
     self.navigationController.navigationBar.barTintColor = kColor;
-    [self.collectView registerNib:[UINib nibWithNibName:@"SingleCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"single"];
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    //设置布局方向为垂直（默认垂直方向）
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    //设置item的间距
+    layout.minimumInteritemSpacing = 5;
+    //设置每一行的间距
+    layout.minimumLineSpacing = 5;
+    //section的边距
+    layout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
+    //通过一个layout布局来创建一个collectView
+    self.collectView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    //设置代理
+    self.collectView.dataSource = self;
+    self.collectView.delegate = self;
+    [self.collectView registerClass:[SingleCollectionViewCell class] forCellWithReuseIdentifier:@"single"];
+    self.collectView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.3];
+    
     [self.view addSubview:self.collectView];
     [self requestModel];
     // Do any additional setup after loading the view.
@@ -36,12 +53,14 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic1 = responseObject;
-        NSArray *array = dic1[@"data"][@"items"];
+        NSDictionary *dic = dic1[@"data"];
+        NSArray *array = dic[@"items"];
         for (NSDictionary *dic2 in array) {
             NSDictionary *dataDic = dic2[@"data"];
             SingleModel *model = [[SingleModel alloc] initWithDictionary:dataDic];
             [self.itemArray addObject:model];
         }
+        [self.collectView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         ZLLog(@"网络请求失败");
     }];
@@ -55,10 +74,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     SingleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"single" forIndexPath:indexPath];
     cell.model = self.itemArray[indexPath.row];
-    cell.backgroundColor = [UIColor orangeColor];
-    ZLLog(@"```%@", cell.model);
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.layer.cornerRadius = 5;
+    cell.clipsToBounds = YES;
+
     return cell;
-    
 }
 #pragma mark---UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -66,35 +86,40 @@
 }
 #pragma mark---UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((kWidth - 15 ) / 2 , kWidth - 15);
+    return CGSizeMake((kWidth - 15 ) / 2 , kWidth * 2 / 3);
+}
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
 }
 
+
 #pragma mark---懒加载
-- (UICollectionView *)collectView{
-    if (_collectView == nil) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        //设置布局方向为垂直（默认垂直方向）
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.headerReferenceSize = CGSizeMake(kWidth, 137);
-        //设置item的间距
-        layout.minimumInteritemSpacing = 5;
-        //设置每一行的间距
-        layout.minimumLineSpacing = 5;
-        //section的边距
-        layout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
-        //设置每个item的大小
-        //layout.itemSize = CGSizeMake((kWidth - 15 ) / 2 , kWidth - 15);
-        //通过一个layout布局来创建一个collectView
-        self.collectView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-        self.collectView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.7];
-        //设置代理
-        self.collectView.dataSource = self;
-        self.collectView.delegate = self;
-        [self.collectView registerClass:[SingleCollectionViewCell class] forCellWithReuseIdentifier:@"single"];
-        
-    }
-    return _collectView;
-}
+//- (UICollectionView *)collectView{
+//    if (_collectView == nil) {
+//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//        //设置布局方向为垂直（默认垂直方向）
+//        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//        layout.headerReferenceSize = CGSizeMake(kWidth, 137);
+//        //设置item的间距
+//        layout.minimumInteritemSpacing = 5;
+//        //设置每一行的间距
+//        layout.minimumLineSpacing = 5;
+//        //section的边距
+//        layout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
+//        //设置每个item的大小
+//        //layout.itemSize = CGSizeMake((kWidth - 15 ) / 2 , kWidth - 15);
+//        //通过一个layout布局来创建一个collectView
+//        self.collectView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+//        self.collectView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.7];
+//        //设置代理
+//        self.collectView.dataSource = self;
+//        self.collectView.delegate = self;
+//        [self.collectView registerClass:[SingleCollectionViewCell class] forCellWithReuseIdentifier:@"single"];
+//        
+//    }
+//    return _collectView;
+//}
 - (NSMutableArray *)itemArray{
     if (_itemArray == nil) {
         self.itemArray = [NSMutableArray new];

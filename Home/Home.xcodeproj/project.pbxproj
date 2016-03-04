@@ -17,8 +17,7 @@
 		7A0C4CD01C89708B000E3BEB /* LHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C4CCF1C89708B000E3BEB /* LHTools.m */; };
 		7A0C4CD61C899476000E3BEB /* SingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C4CD51C899476000E3BEB /* SingleModel.m */; };
 		7A0C4CD81C899782000E3BEB /* single in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CD71C899782000E3BEB /* single */; };
-		7A0C4CDC1C89A132000E3BEB /* SingleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C4CDA1C89A132000E3BEB /* SingleCollectionViewCell.m */; };
-		7A0C4CDD1C89A132000E3BEB /* SingleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CDB1C89A132000E3BEB /* SingleCollectionViewCell.xib */; };
+		7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */; };
 		7AD9B3811C883E8600C35594 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3801C883E8600C35594 /* main.m */; };
 		7AD9B3841C883E8600C35594 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3831C883E8600C35594 /* AppDelegate.m */; };
 		7AD9B3861C883E8600C35594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9B3851C883E8600C35594 /* Assets.xcassets */; };
@@ -48,9 +47,8 @@
 		7A0C4CD41C899476000E3BEB /* SingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleModel.h; sourceTree = "<group>"; };
 		7A0C4CD51C899476000E3BEB /* SingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleModel.m; sourceTree = "<group>"; };
 		7A0C4CD71C899782000E3BEB /* single */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single; sourceTree = "<group>"; };
-		7A0C4CD91C89A132000E3BEB /* SingleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCollectionViewCell.h; sourceTree = "<group>"; };
-		7A0C4CDA1C89A132000E3BEB /* SingleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCollectionViewCell.m; sourceTree = "<group>"; };
-		7A0C4CDB1C89A132000E3BEB /* SingleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleCollectionViewCell.xib; sourceTree = "<group>"; };
+		7A1367A01C89B7B000B67D70 /* SingleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCollectionViewCell.h; sourceTree = "<group>"; };
+		7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCollectionViewCell.m; sourceTree = "<group>"; };
 		7AD9B37C1C883E8600C35594 /* Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD9B3801C883E8600C35594 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7AD9B3821C883E8600C35594 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -338,9 +336,8 @@
 		7AD9B3A41C8841D000C35594 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7A0C4CD91C89A132000E3BEB /* SingleCollectionViewCell.h */,
-				7A0C4CDA1C89A132000E3BEB /* SingleCollectionViewCell.m */,
-				7A0C4CDB1C89A132000E3BEB /* SingleCollectionViewCell.xib */,
+				7A1367A01C89B7B000B67D70 /* SingleCollectionViewCell.h */,
+				7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -420,7 +417,6 @@
 			files = (
 				7A0C4CBD1C895C3F000E3BEB /* banner in Resources */,
 				7AD9B3861C883E8600C35594 /* Assets.xcassets in Resources */,
-				7A0C4CDD1C89A132000E3BEB /* SingleCollectionViewCell.xib in Resources */,
 				7AD9B3CC1C8870D000C35594 /* ThemeTableViewCell.xib in Resources */,
 				7AD9B3BC1C88576700C35594 /* MineStoryBoard.storyboard in Resources */,
 				7A0C4CCB1C896BEA000E3BEB /* blueArrow.png in Resources */,
@@ -496,7 +492,7 @@
 				7AD9B3AA1C88429E00C35594 /* SingleViewController.m in Sources */,
 				7AD9B3A71C88425C00C35594 /* HomeViewController.m in Sources */,
 				7A0C4CCD1C896BEA000E3BEB /* PullingRefreshTableView.m in Sources */,
-				7A0C4CDC1C89A132000E3BEB /* SingleCollectionViewCell.m in Sources */,
+				7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */,
 				7AD9B3CB1C8870D000C35594 /* ThemeTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

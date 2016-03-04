@@ -12,10 +12,10 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dic{
     self = [super init];
     if (self) {
-        self.imageStr = dic[@"cover_image_url"];
-        self.name = dic[@"name"];
-        self.price = dic[@"price"];
-        self.like_counts = dic[@"favorites_count"];
+        self.imageStr = [NSString stringWithFormat:@"%@", dic[@"cover_image_url"]];
+        self.name = [NSString stringWithFormat:@"%@", dic[@"name"]];
+        self.price = [NSString stringWithFormat:@"%@", dic[@"price"]];
+        self.like_counts = [NSString stringWithFormat:@"%@",dic[@"favorites_count"]];
     }
     return self;
 }
