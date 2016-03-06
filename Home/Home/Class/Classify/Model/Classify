@@ -1,0 +1,105 @@
+{
+code = 200;
+data =     {
+"channel_groups" =         (
+{
+channels =                 (
+{
+"group_id" = 1;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/ojv4xts7z.png-pw144";
+id = 12;
+"items_count" = 42;
+name = "\U53a8\U623f";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 1;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/nvz3e7q5b.png-pw144";
+id = 13;
+"items_count" = 86;
+name = "\U5367\U5ba4";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 1;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/avd2tq3g5.png-pw144";
+id = 14;
+"items_count" = 10;
+name = "\U536b\U6d74";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 1;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/amwz8mbfl.png-pw144";
+id = 15;
+"items_count" = 49;
+name = "\U5ba2\U5385";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 1;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/yxqqhyr08.png-pw144";
+id = 16;
+"items_count" = 14;
+name = "\U4e66\U623f";
+order = 0;
+status = 0;
+}
+);
+id = 1;
+name = "\U5730\U70b9";
+order = 0;
+status = 0;
+},
+{
+channels =                 (
+{
+"group_id" = 2;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/qhu58dhuy.png-pw144";
+id = 17;
+"items_count" = 32;
+name = "\U9910\U5177";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 2;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/q9lyw84ks.png-pw144";
+id = 18;
+"items_count" = 16;
+name = "\U706f\U5177";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 2;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/nuwjekgx5.png-pw144";
+id = 19;
+"items_count" = 29;
+name = "\U8f7b\U677e\U5bb6\U52a1";
+order = 0;
+status = 0;
+},
+{
+"group_id" = 2;
+"icon_url" = "http://7fvaoh.com3.z0.glb.qiniucdn.com/image/150715/ly0qa5ejn.png-pw144";
+id = 20;
+"items_count" = 12;
+name = "\U5de5\U4f5c\U65c5\U884c";
+order = 0;
+status = 0;
+}
+);
+id = 2;
+name = "\U54c1\U7c7b";
+order = 0;
+status = 0;
+}
+);
+};
+message = OK;
+}

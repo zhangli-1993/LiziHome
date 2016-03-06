@@ -13,6 +13,7 @@
 #import "EveryUpdateModel.h"
 #import "PullingRefreshTableView.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "KindViewController.h"
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate,PullingRefreshTableViewDelegate>
 {
      NSString *identifier;
@@ -23,7 +24,8 @@
 @property (nonatomic, strong) NSMutableArray *updateArray;
 @property (nonatomic, strong) NSMutableArray *allArray;
 @property (nonatomic, strong) NSMutableArray *timeArray;
-
+@property (nonatomic, strong) NSMutableArray *idArray;
+@property (nonatomic, strong) NSMutableArray *nameArray;
 
 @end
 
@@ -33,7 +35,7 @@
     [super viewDidLoad];
     self.title = @"栗子家居";
     self.navigationController.navigationBar.barTintColor = kColor;
-     identifier = @"theme";
+    identifier = @"theme";
     offset = 0;
     [self.tableView launchRefreshing];
     [self.tableView setFooterOnly:YES];
@@ -45,6 +47,10 @@
     [self requestTwoModel];
 
 }
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 #pragma mark---UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -74,6 +80,14 @@
     [headerView addSubview:cycleView];
     self.tableView.tableHeaderView = headerView;
 }
+#pragma mark---SDCycleScrollViewDelegate
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    KindViewController *kingVC = [[KindViewController alloc] init];
+    kingVC.title = self.nameArray[index];
+    kingVC.idStr = self.idArray[index];
+    ZLLog(@"%@", kingVC.idStr);
+    [self.navigationController pushViewController:kingVC animated:YES];
+}
 #pragma mark---数据请求
 - (void)requestModel{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -86,8 +100,11 @@
         NSDictionary *dic2 = dic1[@"data"];
         NSArray *array1 = dic2[@"banners"];
         for (NSDictionary *dict in array1) {
-            //NSDictionary *dict1 = dict[@"target"];
+            NSDictionary *dict1 = dict[@"target"];
             [self.cycleArray addObject:dict[@"image_url"]];
+            [self.idArray addObject:dict1[@"id"]];
+            [self.nameArray addObject:dict1[@"title"]];
+
         }
         [self configHeaderView];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -173,6 +190,18 @@
         self.timeArray = [NSMutableArray new];
     }
     return _timeArray;
+}
+- (NSMutableArray *)idArray{
+    if (_idArray == nil) {
+        self.idArray = [NSMutableArray new];
+    }
+    return _idArray;
+}
+- (NSMutableArray *)nameArray{
+    if (_nameArray == nil) {
+        self.nameArray = [NSMutableArray new];
+    }
+    return _nameArray;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

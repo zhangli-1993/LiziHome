@@ -17,6 +17,19 @@
 		7A0C4CD01C89708B000E3BEB /* LHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C4CCF1C89708B000E3BEB /* LHTools.m */; };
 		7A0C4CD61C899476000E3BEB /* SingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C4CD51C899476000E3BEB /* SingleModel.m */; };
 		7A0C4CD81C899782000E3BEB /* single in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CD71C899782000E3BEB /* single */; };
+		7A101A0F1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */; };
+		7A101A101C8A817A00500069 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A0E1C8A817A00500069 /* UIScrollView+SVPullToRefresh.m */; };
+		7A101A121C8A889900500069 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A101A111C8A889900500069 /* UIKit.framework */; };
+		7A101A141C8A88AE00500069 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A101A131C8A88AE00500069 /* QuartzCore.framework */; };
+		7A101A161C8A88BF00500069 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A101A151C8A88BF00500069 /* Foundation.framework */; };
+		7A101A181C8A88CB00500069 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A101A171C8A88CB00500069 /* CoreGraphics.framework */; };
+		7A101A1A1C8A91E700500069 /* Classify in Resources */ = {isa = PBXBuildFile; fileRef = 7A101A191C8A91E700500069 /* Classify */; };
+		7A101A1D1C8A925900500069 /* ClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A1C1C8A925900500069 /* ClassifyModel.m */; };
+		7A101A201C8A928600500069 /* ClassifyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A1F1C8A928600500069 /* ClassifyCollectionViewCell.m */; };
+		7A101A231C8ABE2D00500069 /* KindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A221C8ABE2D00500069 /* KindViewController.m */; };
+		7A101A251C8AC79400500069 /* kind in Resources */ = {isa = PBXBuildFile; fileRef = 7A101A241C8AC79400500069 /* kind */; };
+		7A101A291C8AD47B00500069 /* UIViewController+BackAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A281C8AD47B00500069 /* UIViewController+BackAction.m */; };
+		7A101A2C1C8ADE2000500069 /* CycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A2B1C8ADE2000500069 /* CycleViewController.m */; };
 		7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */; };
 		7AD9B3811C883E8600C35594 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3801C883E8600C35594 /* main.m */; };
 		7AD9B3841C883E8600C35594 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3831C883E8600C35594 /* AppDelegate.m */; };
@@ -47,6 +60,27 @@
 		7A0C4CD41C899476000E3BEB /* SingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleModel.h; sourceTree = "<group>"; };
 		7A0C4CD51C899476000E3BEB /* SingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleModel.m; sourceTree = "<group>"; };
 		7A0C4CD71C899782000E3BEB /* single */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single; sourceTree = "<group>"; };
+		7A101A0A1C8A817A00500069 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		7A101A0B1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		7A101A0D1C8A817A00500069 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		7A101A0E1C8A817A00500069 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		7A101A111C8A889900500069 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7A101A131C8A88AE00500069 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7A101A151C8A88BF00500069 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A101A171C8A88CB00500069 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7A101A191C8A91E700500069 /* Classify */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Classify; sourceTree = "<group>"; };
+		7A101A1B1C8A925900500069 /* ClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyModel.h; sourceTree = "<group>"; };
+		7A101A1C1C8A925900500069 /* ClassifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyModel.m; sourceTree = "<group>"; };
+		7A101A1E1C8A928600500069 /* ClassifyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyCollectionViewCell.h; sourceTree = "<group>"; };
+		7A101A1F1C8A928600500069 /* ClassifyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyCollectionViewCell.m; sourceTree = "<group>"; };
+		7A101A211C8ABE2D00500069 /* KindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KindViewController.h; sourceTree = "<group>"; };
+		7A101A221C8ABE2D00500069 /* KindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KindViewController.m; sourceTree = "<group>"; };
+		7A101A241C8AC79400500069 /* kind */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kind; sourceTree = "<group>"; };
+		7A101A271C8AD47B00500069 /* UIViewController+BackAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackAction.h"; sourceTree = "<group>"; };
+		7A101A281C8AD47B00500069 /* UIViewController+BackAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackAction.m"; sourceTree = "<group>"; };
+		7A101A2A1C8ADE2000500069 /* CycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleViewController.h; sourceTree = "<group>"; };
+		7A101A2B1C8ADE2000500069 /* CycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleViewController.m; sourceTree = "<group>"; };
 		7A1367A01C89B7B000B67D70 /* SingleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCollectionViewCell.h; sourceTree = "<group>"; };
 		7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCollectionViewCell.m; sourceTree = "<group>"; };
 		7AD9B37C1C883E8600C35594 /* Home.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +112,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A101A181C8A88CB00500069 /* CoreGraphics.framework in Frameworks */,
+				7A101A161C8A88BF00500069 /* Foundation.framework in Frameworks */,
+				7A101A141C8A88AE00500069 /* QuartzCore.framework in Frameworks */,
+				7A101A121C8A889900500069 /* UIKit.framework in Frameworks */,
 				213D1C4193A7C19476F87479 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +135,10 @@
 		5E28EEA467451B2004748FED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A101A171C8A88CB00500069 /* CoreGraphics.framework */,
+				7A101A151C8A88BF00500069 /* Foundation.framework */,
+				7A101A131C8A88AE00500069 /* QuartzCore.framework */,
+				7A101A111C8A889900500069 /* UIKit.framework */,
 				F4AC0D28E529753DED604729 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -111,6 +153,18 @@
 				7A0C4CCA1C896BEA000E3BEB /* PullingRefreshTableView.m */,
 			);
 			path = PullingRefreshTableView;
+			sourceTree = "<group>";
+		};
+		7A101A091C8A817A00500069 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				7A101A0A1C8A817A00500069 /* SVPullToRefresh.h */,
+				7A101A0B1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.h */,
+				7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */,
+				7A101A0D1C8A817A00500069 /* UIScrollView+SVPullToRefresh.h */,
+				7A101A0E1C8A817A00500069 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		7AD9B3731C883E8600C35594 = {
@@ -181,6 +235,8 @@
 			children = (
 				7AD9B3AB1C8842B600C35594 /* ClassifyViewController.h */,
 				7AD9B3AC1C8842B600C35594 /* ClassifyViewController.m */,
+				7A101A211C8ABE2D00500069 /* KindViewController.h */,
+				7A101A221C8ABE2D00500069 /* KindViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +244,10 @@
 		7AD9B3931C8841D000C35594 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A101A191C8A91E700500069 /* Classify */,
+				7A101A241C8AC79400500069 /* kind */,
+				7A101A1B1C8A925900500069 /* ClassifyModel.h */,
+				7A101A1C1C8A925900500069 /* ClassifyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +255,8 @@
 		7AD9B3941C8841D000C35594 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A101A1E1C8A928600500069 /* ClassifyCollectionViewCell.h */,
+				7A101A1F1C8A928600500069 /* ClassifyCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,6 +276,8 @@
 			children = (
 				7AD9B3A51C88425C00C35594 /* HomeViewController.h */,
 				7AD9B3A61C88425C00C35594 /* HomeViewController.m */,
+				7A101A2A1C8ADE2000500069 /* CycleViewController.h */,
+				7A101A2B1C8ADE2000500069 /* CycleViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,11 +409,14 @@
 		7AD9B3B11C88444B00C35594 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				7A101A091C8A817A00500069 /* SVPullToRefresh */,
 				7A0C4CC61C896BEA000E3BEB /* PullingRefreshTableView */,
 				7AD9B3BE1C88667200C35594 /* pch.pch */,
 				7AD9B3C01C88685900C35594 /* NetworkList.h */,
 				7A0C4CCE1C89708B000E3BEB /* LHTools.h */,
 				7A0C4CCF1C89708B000E3BEB /* LHTools.m */,
+				7A101A271C8AD47B00500069 /* UIViewController+BackAction.h */,
+				7A101A281C8AD47B00500069 /* UIViewController+BackAction.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -415,10 +482,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A101A251C8AC79400500069 /* kind in Resources */,
 				7A0C4CBD1C895C3F000E3BEB /* banner in Resources */,
 				7AD9B3861C883E8600C35594 /* Assets.xcassets in Resources */,
 				7AD9B3CC1C8870D000C35594 /* ThemeTableViewCell.xib in Resources */,
 				7AD9B3BC1C88576700C35594 /* MineStoryBoard.storyboard in Resources */,
+				7A101A1A1C8A91E700500069 /* Classify in Resources */,
 				7A0C4CCB1C896BEA000E3BEB /* blueArrow.png in Resources */,
 				7AD9B3891C883E8600C35594 /* LaunchScreen.storyboard in Resources */,
 				7A0C4CD81C899782000E3BEB /* single in Resources */,
@@ -485,13 +554,20 @@
 				7AD9B3841C883E8600C35594 /* AppDelegate.m in Sources */,
 				7A0C4CD61C899476000E3BEB /* SingleModel.m in Sources */,
 				7A0C4CD01C89708B000E3BEB /* LHTools.m in Sources */,
+				7A101A291C8AD47B00500069 /* UIViewController+BackAction.m in Sources */,
 				7AD9B3AD1C8842B600C35594 /* ClassifyViewController.m in Sources */,
 				7AD9B3811C883E8600C35594 /* main.m in Sources */,
+				7A101A2C1C8ADE2000500069 /* CycleViewController.m in Sources */,
+				7A101A1D1C8A925900500069 /* ClassifyModel.m in Sources */,
 				7AD9B3B81C88523100C35594 /* MineViewController.m in Sources */,
+				7A101A231C8ABE2D00500069 /* KindViewController.m in Sources */,
 				7A0C4CC51C89666E000E3BEB /* EveryUpdateModel.m in Sources */,
 				7AD9B3AA1C88429E00C35594 /* SingleViewController.m in Sources */,
 				7AD9B3A71C88425C00C35594 /* HomeViewController.m in Sources */,
 				7A0C4CCD1C896BEA000E3BEB /* PullingRefreshTableView.m in Sources */,
+				7A101A101C8A817A00500069 /* UIScrollView+SVPullToRefresh.m in Sources */,
+				7A101A201C8A928600500069 /* ClassifyCollectionViewCell.m in Sources */,
+				7A101A0F1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */,
 				7AD9B3CB1C8870D000C35594 /* ThemeTableViewCell.m in Sources */,
 			);

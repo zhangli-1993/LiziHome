@@ -13,6 +13,11 @@
 //首页每日更新接口
 #define kUpdate @"http://api.bohejiaju.com/v2/channels/5/items?limit=20&gender=2&generation=1"
 //单品接口
-#define kItem @"http://api.bohejiaju.com/v2/items?limit=20&offset=0&gender=2&generation=1"
-
+#define kItem @"http://api.bohejiaju.com/v2/items?limit=20&gender=2&generation=1"
+//分类页面接口
+#define kClassify @"http://api.bohejiaju.com/v2/channel_groups/all"
+//每一类接口
+#define kKind @"http://api.bohejiaju.com/v2/channels/"
+//首页轮播图详情接口
+#define kCycleContent @"http://api.bohejiaju.com/v2/collections/"
 #endif /* NetworkList_h */

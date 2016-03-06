@@ -10,7 +10,11 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "SingleModel.h"
 #import "SingleCollectionViewCell.h"
+#import "SVPullToRefresh.h"
 @interface SingleViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+{
+    NSInteger offset;
+}
 @property (nonatomic, strong) UICollectionView *collectView;
 @property (nonatomic, strong) NSMutableArray *itemArray;
 
@@ -22,34 +26,29 @@
     [super viewDidLoad];
     self.title = @"单品";
     self.navigationController.navigationBar.barTintColor = kColor;
-    
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    //设置布局方向为垂直（默认垂直方向）
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    //设置item的间距
-    layout.minimumInteritemSpacing = 5;
-    //设置每一行的间距
-    layout.minimumLineSpacing = 5;
-    //section的边距
-    layout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
-    //通过一个layout布局来创建一个collectView
-    self.collectView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-    //设置代理
-    self.collectView.dataSource = self;
-    self.collectView.delegate = self;
-    [self.collectView registerClass:[SingleCollectionViewCell class] forCellWithReuseIdentifier:@"single"];
-    self.collectView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.3];
-    
+    offset = 0;
+    __weak SingleViewController *weakSelf = self;
+    //下拉刷新
+//    [self.collectView addPullToRefreshWithActionHandler:^{
+//        [weakSelf insertRowAtTop];
+//    }];
+    [self.collectView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf insertRowAtBottom];
+    }];
     [self.view addSubview:self.collectView];
     [self requestModel];
     // Do any additional setup after loading the view.
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [self.collectView triggerPullToRefresh];
+}
+
 #pragma mark---网络请求
 - (void)requestModel{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    [manager GET:kItem parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:[NSString stringWithFormat:@"%@&offset=%ld", kItem, offset] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic1 = responseObject;
@@ -92,34 +91,36 @@
 {
     return YES;
 }
+#pragma mark---custom mothed
 
+- (void)insertRowAtBottom{
+    offset += 20;
+    [self performSelector:@selector(requestModel) withObject:nil afterDelay:1.0];
+}
 
 #pragma mark---懒加载
-//- (UICollectionView *)collectView{
-//    if (_collectView == nil) {
-//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-//        //设置布局方向为垂直（默认垂直方向）
-//        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//        layout.headerReferenceSize = CGSizeMake(kWidth, 137);
-//        //设置item的间距
-//        layout.minimumInteritemSpacing = 5;
-//        //设置每一行的间距
-//        layout.minimumLineSpacing = 5;
-//        //section的边距
-//        layout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
-//        //设置每个item的大小
-//        //layout.itemSize = CGSizeMake((kWidth - 15 ) / 2 , kWidth - 15);
-//        //通过一个layout布局来创建一个collectView
-//        self.collectView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-//        self.collectView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.7];
-//        //设置代理
-//        self.collectView.dataSource = self;
-//        self.collectView.delegate = self;
-//        [self.collectView registerClass:[SingleCollectionViewCell class] forCellWithReuseIdentifier:@"single"];
-//        
-//    }
-//    return _collectView;
-//}
+- (UICollectionView *)collectView{
+    if (_collectView == nil) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//设置布局方向为垂直（默认垂直方向）
+layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//设置item的间距
+layout.minimumInteritemSpacing = 5;
+//设置每一行的间距
+layout.minimumLineSpacing = 5;
+//section的边距
+layout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
+//通过一个layout布局来创建一个collectView
+self.collectView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+//设置代理
+self.collectView.dataSource = self;
+self.collectView.delegate = self;
+[self.collectView registerClass:[SingleCollectionViewCell class] forCellWithReuseIdentifier:@"single"];
+self.collectView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.3];
+
+    }
+    return _collectView;
+}
 - (NSMutableArray *)itemArray{
     if (_itemArray == nil) {
         self.itemArray = [NSMutableArray new];
