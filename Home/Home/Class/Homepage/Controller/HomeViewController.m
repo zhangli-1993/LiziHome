@@ -14,6 +14,7 @@
 #import "PullingRefreshTableView.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import "KindViewController.h"
+#import "ThemeContentViewController.h"
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate,PullingRefreshTableViewDelegate>
 {
      NSString *identifier;
@@ -70,7 +71,12 @@
     }
     return self.timeArray[section];
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ThemeContentViewController *tVC = [[ThemeContentViewController alloc] init];
+    EveryUpdateModel *model = self.allArray[indexPath.section];
+    tVC.idStr = model.idStr;
+    [self.navigationController pushViewController:tVC animated:YES];
+}
 #pragma mark---自定义分区头部
 - (void)configHeaderView{
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kWidth / 2.2)];
@@ -85,7 +91,6 @@
     KindViewController *kingVC = [[KindViewController alloc] init];
     kingVC.title = self.nameArray[index];
     kingVC.idStr = self.idArray[index];
-    ZLLog(@"%@", kingVC.idStr);
     [self.navigationController pushViewController:kingVC animated:YES];
 }
 #pragma mark---数据请求

@@ -11,6 +11,7 @@
 #import "SingleModel.h"
 #import "SingleCollectionViewCell.h"
 #import "SVPullToRefresh.h"
+#import "GoodsContentViewController.h"
 @interface SingleViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     NSInteger offset;
@@ -40,6 +41,7 @@
     // Do any additional setup after loading the view.
 }
 - (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
     [self.collectView triggerPullToRefresh];
 }
 
@@ -81,7 +83,10 @@
 }
 #pragma mark---UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    GoodsContentViewController *gVC = [[GoodsContentViewController alloc] init];
+    SingleModel *model = self.itemArray[indexPath.row];
+    gVC.idStr = model.idStr;
+    [self.navigationController pushViewController:gVC animated:YES];
 }
 #pragma mark---UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

@@ -20,4 +20,7 @@
 #define kKind @"http://api.bohejiaju.com/v2/channels/"
 //首页轮播图详情接口
 #define kCycleContent @"http://api.bohejiaju.com/v2/collections/"
+//主题详情
+#define kThemeContent @"http://api.bohejiaju.com/v1/posts/"
+#define kGoodsContent @"http://api.bohejiaju.com/v2/items/"
 #endif /* NetworkList_h */

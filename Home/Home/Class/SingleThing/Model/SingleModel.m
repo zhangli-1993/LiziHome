@@ -16,6 +16,8 @@
         self.name = [NSString stringWithFormat:@"%@", dic[@"name"]];
         self.price = [NSString stringWithFormat:@"%@", dic[@"price"]];
         self.like_counts = [NSString stringWithFormat:@"%@",dic[@"favorites_count"]];
+        self.idStr = [NSString stringWithFormat:@"%@",dic[@"id"]];
+
     }
     return self;
 }

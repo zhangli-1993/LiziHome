@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, strong) NSString *like_count;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *idStr;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 @end

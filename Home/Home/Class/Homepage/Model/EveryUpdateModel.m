@@ -15,6 +15,7 @@
         self.image = dic[@"cover_image_url"];
         self.like_count = dic[@"likes_count"];
         self.title = dic[@"title"];
+        self.idStr = dic[@"id"];
     }
     return self;
 }

@@ -11,6 +11,7 @@
 #import "ThemeTableViewCell.h"
 #import "SVPullToRefresh.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
+#import "ThemeContentViewController.h"
 @interface KindViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     NSString *identifier;
@@ -54,6 +55,10 @@
 
 #pragma mark---UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ThemeContentViewController *tVC = [[ThemeContentViewController alloc] init];
+    EveryUpdateModel *model = self.themeArray[indexPath.row];
+    tVC.idStr = model.idStr;
+    [self.navigationController pushViewController:tVC animated:YES];
     
 }
 #pragma mark---数据请求
