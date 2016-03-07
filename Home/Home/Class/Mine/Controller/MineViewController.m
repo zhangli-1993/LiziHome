@@ -7,8 +7,9 @@
 //
 
 #import "MineViewController.h"
-
+#import "LoginViewController.h"
 @interface MineViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *LoginButton;
 
 @end
 
@@ -17,10 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor brownColor];
-
+    [self.LoginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
-
+- (void)loginAction{
+    UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UINavigationController *nav = [login instantiateViewControllerWithIdentifier:@"login"];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

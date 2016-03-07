@@ -19,7 +19,6 @@
 		7A0C4CD81C899782000E3BEB /* single in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CD71C899782000E3BEB /* single */; };
 		7A0C631A1C8BE12600AD5D11 /* ThemeContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C63191C8BE12600AD5D11 /* ThemeContentViewController.m */; };
 		7A0C631C1C8BE38E00AD5D11 /* themeContent in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C631B1C8BE38E00AD5D11 /* themeContent */; };
-		7A0C631F1C8BE64F00AD5D11 /* ThemeContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C631E1C8BE64F00AD5D11 /* ThemeContentView.m */; };
 		7A101A0F1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */; };
 		7A101A101C8A817A00500069 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A0E1C8A817A00500069 /* UIScrollView+SVPullToRefresh.m */; };
 		7A101A121C8A889900500069 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A101A111C8A889900500069 /* UIKit.framework */; };
@@ -45,8 +44,10 @@
 		7AD9B3BC1C88576700C35594 /* MineStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9B3BB1C88576700C35594 /* MineStoryBoard.storyboard */; };
 		7AD9B3CB1C8870D000C35594 /* ThemeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3C91C8870D000C35594 /* ThemeTableViewCell.m */; };
 		7AD9B3CC1C8870D000C35594 /* ThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9B3CA1C8870D000C35594 /* ThemeTableViewCell.xib */; };
-		7AF63AAA1C8C205D0006FB88 /* GoodsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF63AA91C8C205D0006FB88 /* GoodsContentViewController.m */; };
-		7AF63AAD1C8C25560006FB88 /* GoodsContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF63AAC1C8C25560006FB88 /* GoodsContentView.m */; };
+		7AE3F20B1C8D09C80001B73E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE3F20A1C8D09C80001B73E /* Login.storyboard */; };
+		7AE3F20E1C8D09E70001B73E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3F20D1C8D09E70001B73E /* LoginViewController.m */; };
+		7AE3F2111C8D1B050001B73E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3F2101C8D1B050001B73E /* RegisterViewController.m */; };
+		7AE3F2141C8D94210001B73E /* ItemContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3F2131C8D94210001B73E /* ItemContentViewController.m */; };
 		7AF63AB71C8C28F70006FB88 /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF63AB01C8C28F70006FB88 /* VOContentLayer.m */; };
 		7AF63AB81C8C28F70006FB88 /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF63AB21C8C28F70006FB88 /* VOIndicatorAnimation.m */; };
 		7AF63AB91C8C28F70006FB88 /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF63AB41C8C28F70006FB88 /* VOSegment.m */; };
@@ -72,8 +73,6 @@
 		7A0C63181C8BE12600AD5D11 /* ThemeContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeContentViewController.h; sourceTree = "<group>"; };
 		7A0C63191C8BE12600AD5D11 /* ThemeContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeContentViewController.m; sourceTree = "<group>"; };
 		7A0C631B1C8BE38E00AD5D11 /* themeContent */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = themeContent; sourceTree = "<group>"; };
-		7A0C631D1C8BE64F00AD5D11 /* ThemeContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeContentView.h; sourceTree = "<group>"; };
-		7A0C631E1C8BE64F00AD5D11 /* ThemeContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeContentView.m; sourceTree = "<group>"; };
 		7A101A0A1C8A817A00500069 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		7A101A0B1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -118,10 +117,13 @@
 		7AD9B3C81C8870D000C35594 /* ThemeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeTableViewCell.h; sourceTree = "<group>"; };
 		7AD9B3C91C8870D000C35594 /* ThemeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeTableViewCell.m; sourceTree = "<group>"; };
 		7AD9B3CA1C8870D000C35594 /* ThemeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeTableViewCell.xib; sourceTree = "<group>"; };
-		7AF63AA81C8C205C0006FB88 /* GoodsContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsContentViewController.h; sourceTree = "<group>"; };
-		7AF63AA91C8C205D0006FB88 /* GoodsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsContentViewController.m; sourceTree = "<group>"; };
-		7AF63AAB1C8C25560006FB88 /* GoodsContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsContentView.h; sourceTree = "<group>"; };
-		7AF63AAC1C8C25560006FB88 /* GoodsContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsContentView.m; sourceTree = "<group>"; };
+		7AE3F20A1C8D09C80001B73E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		7AE3F20C1C8D09E70001B73E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7AE3F20D1C8D09E70001B73E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7AE3F20F1C8D1B050001B73E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		7AE3F2101C8D1B050001B73E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7AE3F2121C8D94210001B73E /* ItemContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemContentViewController.h; sourceTree = "<group>"; };
+		7AE3F2131C8D94210001B73E /* ItemContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemContentViewController.m; sourceTree = "<group>"; };
 		7AF63AAF1C8C28F70006FB88 /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
 		7AF63AB01C8C28F70006FB88 /* VOContentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOContentLayer.m; sourceTree = "<group>"; };
 		7AF63AB11C8C28F70006FB88 /* VOIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOIndicatorAnimation.h; sourceTree = "<group>"; };
@@ -328,8 +330,6 @@
 				7AD9B3C81C8870D000C35594 /* ThemeTableViewCell.h */,
 				7AD9B3C91C8870D000C35594 /* ThemeTableViewCell.m */,
 				7AD9B3CA1C8870D000C35594 /* ThemeTableViewCell.xib */,
-				7A0C631D1C8BE64F00AD5D11 /* ThemeContentView.h */,
-				7A0C631E1C8BE64F00AD5D11 /* ThemeContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +347,10 @@
 		7AD9B39A1C8841D000C35594 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7AE3F20C1C8D09E70001B73E /* LoginViewController.h */,
+				7AE3F20D1C8D09E70001B73E /* LoginViewController.m */,
+				7AE3F20F1C8D1B050001B73E /* RegisterViewController.h */,
+				7AE3F2101C8D1B050001B73E /* RegisterViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,6 +365,7 @@
 		7AD9B39C1C8841D000C35594 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7AE3F20A1C8D09C80001B73E /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,8 +419,8 @@
 			children = (
 				7AD9B3A81C88429E00C35594 /* SingleViewController.h */,
 				7AD9B3A91C88429E00C35594 /* SingleViewController.m */,
-				7AF63AA81C8C205C0006FB88 /* GoodsContentViewController.h */,
-				7AF63AA91C8C205D0006FB88 /* GoodsContentViewController.m */,
+				7AE3F2121C8D94210001B73E /* ItemContentViewController.h */,
+				7AE3F2131C8D94210001B73E /* ItemContentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -435,8 +440,6 @@
 			children = (
 				7A1367A01C89B7B000B67D70 /* SingleCollectionViewCell.h */,
 				7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */,
-				7AF63AAB1C8C25560006FB88 /* GoodsContentView.h */,
-				7AF63AAC1C8C25560006FB88 /* GoodsContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				7A0C4CD81C899782000E3BEB /* single in Resources */,
 				7A0C4CBF1C896516000E3BEB /* update in Resources */,
 				7A0C4CCC1C896BEA000E3BEB /* blueArrowDown.png in Resources */,
+				7AE3F20B1C8D09C80001B73E /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,25 +611,25 @@
 				7A0C4CD61C899476000E3BEB /* SingleModel.m in Sources */,
 				7A0C4CD01C89708B000E3BEB /* LHTools.m in Sources */,
 				7A101A291C8AD47B00500069 /* UIViewController+BackAction.m in Sources */,
+				7AE3F20E1C8D09E70001B73E /* LoginViewController.m in Sources */,
 				7AD9B3AD1C8842B600C35594 /* ClassifyViewController.m in Sources */,
 				7AD9B3811C883E8600C35594 /* main.m in Sources */,
 				7A101A2C1C8ADE2000500069 /* CycleViewController.m in Sources */,
 				7A101A1D1C8A925900500069 /* ClassifyModel.m in Sources */,
 				7AD9B3B81C88523100C35594 /* MineViewController.m in Sources */,
 				7A101A231C8ABE2D00500069 /* KindViewController.m in Sources */,
+				7AE3F2111C8D1B050001B73E /* RegisterViewController.m in Sources */,
 				7A0C4CC51C89666E000E3BEB /* EveryUpdateModel.m in Sources */,
 				7AD9B3AA1C88429E00C35594 /* SingleViewController.m in Sources */,
 				7AF63AB91C8C28F70006FB88 /* VOSegment.m in Sources */,
-				7AF63AAD1C8C25560006FB88 /* GoodsContentView.m in Sources */,
 				7AD9B3A71C88425C00C35594 /* HomeViewController.m in Sources */,
-				7A0C631F1C8BE64F00AD5D11 /* ThemeContentView.m in Sources */,
+				7AE3F2141C8D94210001B73E /* ItemContentViewController.m in Sources */,
 				7A0C4CCD1C896BEA000E3BEB /* PullingRefreshTableView.m in Sources */,
 				7AF63AB71C8C28F70006FB88 /* VOContentLayer.m in Sources */,
 				7A101A101C8A817A00500069 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				7A101A201C8A928600500069 /* ClassifyCollectionViewCell.m in Sources */,
 				7A0C631A1C8BE12600AD5D11 /* ThemeContentViewController.m in Sources */,
 				7A101A0F1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				7AF63AAA1C8C205D0006FB88 /* GoodsContentViewController.m in Sources */,
 				7AF63AB81C8C28F70006FB88 /* VOIndicatorAnimation.m in Sources */,
 				7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */,
 				7AD9B3CB1C8870D000C35594 /* ThemeTableViewCell.m in Sources */,

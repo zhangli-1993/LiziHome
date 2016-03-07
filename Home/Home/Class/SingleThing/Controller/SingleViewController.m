@@ -11,7 +11,7 @@
 #import "SingleModel.h"
 #import "SingleCollectionViewCell.h"
 #import "SVPullToRefresh.h"
-#import "GoodsContentViewController.h"
+#import "ItemContentViewController.h"
 @interface SingleViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     NSInteger offset;
@@ -83,9 +83,9 @@
 }
 #pragma mark---UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    GoodsContentViewController *gVC = [[GoodsContentViewController alloc] init];
+    ItemContentViewController *gVC = [[ItemContentViewController alloc] init];
     SingleModel *model = self.itemArray[indexPath.row];
-    gVC.idStr = model.idStr;
+    gVC.idstr = model.idStr;
     [self.navigationController pushViewController:gVC animated:YES];
 }
 #pragma mark---UICollectionViewDelegateFlowLayout
