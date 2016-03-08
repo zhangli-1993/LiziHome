@@ -11,7 +11,10 @@
 #import "SingleViewController.h"
 #import "ClassifyViewController.h"
 #import "MineViewController.h"
-@interface AppDelegate ()
+#import "WeiboSDK.h"
+#import "WXApi.h"
+#import <BmobSDK/Bmob.h>
+@interface AppDelegate ()<WeiboSDKDelegate, WXApiDelegate>
 
 @end
 
@@ -21,6 +24,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:AppKey];
+    [WXApi registerApp:kWXAppID];
+    [Bmob registerWithAppKey:kBmobAppID];
+
+
     self.tab = [[UITabBarController alloc] init];
     self.tab.tabBar.tintColor = [UIColor colorWithRed:100/255.0f green:199/255.0f blue:250/255.0f alpha:1.0];
     HomeViewController *homeVC = [[HomeViewController alloc] init];
@@ -33,21 +42,31 @@
     ClassifyViewController *classifyVC = [[ClassifyViewController alloc] init];
     UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:classifyVC];
     nav3.tabBarItem.title = @"分类";
-//    MineViewController *mineVC = [[MineViewController alloc] init];
-//    UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:mineVC];
+
     UIStoryboard *mine = [UIStoryboard storyboardWithName:@"MineStoryBoard" bundle:nil];
     UINavigationController *nav4 = mine.instantiateInitialViewController;
     nav4.tabBarItem.title = @"我";
     self.tab.viewControllers = @[nav1, nav2, nav3, nav4];
     self.window.rootViewController = self.tab;
-
-    
-    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [WeiboSDK handleOpenURL:url delegate:self];
+    return [WXApi handleOpenURL:url delegate:self];
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [WeiboSDK handleOpenURL:url delegate:self];
+    return [WXApi handleOpenURL:url delegate:self];
+}
 
+- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+    
+}
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+    
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

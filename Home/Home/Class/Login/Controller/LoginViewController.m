@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import <BmobSDK/Bmob.h>
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
@@ -26,12 +26,18 @@
     self.label1.backgroundColor = kColor;
     self.label2.backgroundColor = kColor;
     self.loginBtn.backgroundColor = kColor;
-    
+    [self.loginBtn addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
 - (void)back{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+- (void)login{
+   
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

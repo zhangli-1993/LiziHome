@@ -23,6 +23,10 @@
     return self;
 }
 - (void)configView{
+    UIImageView *heart = [[UIImageView alloc] initWithFrame:CGRectMake((kWidth - 15) / 2 - 76, (kWidth - 15) / 2 + (kWidth - 8) / 15 + 13, 15, 15)];
+    heart.image = [UIImage imageNamed:@"like"];
+    [self addSubview:heart];
+    
     [self addSubview:self.imageview];
     
     [self addSubview:self.name];
@@ -55,13 +59,15 @@
     if (_price == nil) {
         self.price = [[UILabel alloc] initWithFrame:CGRectMake(5, (kWidth - 15) / 2 + (kWidth - 15) / 15, 60 , 40)];
         self.price.textColor = kColor;
+        
     }
     return _price;
 }
 - (UILabel *)like{
     if (_like == nil) {
         self.like = [[UILabel alloc] initWithFrame:CGRectMake((kWidth - 15) / 2 - 60, (kWidth - 15) / 2 + (kWidth - 8) / 15, 60, 40)];
-        self.like.textColor = [UIColor lightGrayColor];
+        self.like.font = [UIFont systemFontOfSize:12.0];
+        self.like.textColor = [UIColor grayColor];
     }
     return _like;
 }

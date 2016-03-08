@@ -19,6 +19,7 @@ UITableViewDelegate, SDCycleScrollViewDelegate, UIWebViewDelegate>
 @property (nonatomic, strong) UILabel *descriptionLabel;
 @property (nonatomic, strong) UIButton *buyButton;
 @property (nonatomic, strong) UIView *threeView;
+@property (nonatomic, strong) NSDictionary *dataDic;
 
 
 @end
@@ -30,7 +31,10 @@ UITableViewDelegate, SDCycleScrollViewDelegate, UIWebViewDelegate>
     self.title = @"商品详情";
     self.tabBarController.tabBar.hidden = YES;
     self.navigationController.navigationBar.barTintColor = kColor;
+    [self.threeView addSubview:self.buyButton];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.threeView];
+
     [self showBackButton];
     [self setHeadView];
     [self requestModel];
@@ -46,19 +50,25 @@ UITableViewDelegate, SDCycleScrollViewDelegate, UIWebViewDelegate>
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = responseObject;
-        NSDictionary *dataDic = dic[@"data"];
-        self.CycleScrollView.imageURLStringsGroup = dataDic[@"image_urls"];
-        self.titleLabel.text = dataDic[@"name"];
-        self.priceLabel.text = [NSString stringWithFormat:@"￥%@", dataDic[@"price"]];
-        self.descriptionLabel.text = dataDic[@"description"];
-        [self.webView loadHTMLString:dataDic[@"detail_html"] baseURL:nil];
+        self.dataDic = [NSDictionary new];
+        self.dataDic = dic[@"data"];
+        self.CycleScrollView.imageURLStringsGroup = self.dataDic[@"image_urls"];
+        self.titleLabel.text = self.dataDic[@"name"];
+        self.priceLabel.text = [NSString stringWithFormat:@"￥%@", self.dataDic[@"price"]];
+        self.descriptionLabel.text = self.dataDic[@"description"];
+        [self.webView loadHTMLString:self.dataDic[@"detail_html"] baseURL:nil];
+        [self.buyButton setTitle:self.dataDic[@"source"][@"button_title"] forState:UIControlStateNormal];
+        [self.buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
         ZLLog(@"数据请求成功");
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         ZLLog(@"数据请求失败%@", error);
     }];
 }
-
+- (void)buyAction{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.dataDic[@"purchase_url"]]];
+//    [self.webView loadHTMLString:self.dataDic[@"purchase_url"] baseURL:nil];
+}
 - (void)setHeadView{
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kWidth * 5 / 4 - 20)];
     headView.backgroundColor = [UIColor whiteColor];

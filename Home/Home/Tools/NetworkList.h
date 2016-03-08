@@ -23,4 +23,13 @@
 //主题详情
 #define kThemeContent @"http://api.bohejiaju.com/v1/posts/"
 #define kGoodsContent @"http://api.bohejiaju.com/v2/items/"
+//微信分享
+#define kWXAppID @"wxeda3509235202839"
+#define kWXAppSecret @"7a4d708ee99811e0e47ece25fcbc594c"
+//bmob
+#define kBmobAppID @"e1a2b623c98c7dc04bae2e8416d9cb6b"
+
+
+
+
 #endif /* NetworkList_h */

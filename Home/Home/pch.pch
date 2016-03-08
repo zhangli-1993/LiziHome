@@ -8,9 +8,12 @@
 
 #ifndef pch_pch
 #define pch_pch
-#define kColor [UIColor colorWithRed:100/255.0f green:199/255.0f blue:250/255.0f alpha:1.0];
+#define kColor [UIColor colorWithRed:100/255.0f green:199/255.0f blue:250/255.0f alpha:1.0]
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
+#define AppKey @"3248271966"
+#define AppSecret @"3ea1f13dd8cfbefd0b40b61b6717beb8"
+#define kRedirectURL @"http://www.sina.com"
 #import "NetworkList.h"
 #import "LHTools.h"
 #import "UIViewController+BackAction.h"

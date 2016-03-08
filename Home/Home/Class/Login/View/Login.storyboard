@@ -8,7 +8,7 @@
         <!--Login View Controller-->
         <scene sceneID="rl5-RN-5Ry">
             <objects>
-                <viewController id="5Tb-ij-hZD" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="li" id="5Tb-ij-hZD" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yQW-7C-rZy"/>
                         <viewControllerLayoutGuide type="bottom" id="w98-wD-6aN"/>
@@ -87,7 +87,7 @@
         <!--Register View Controller-->
         <scene sceneID="BdI-Zf-kbH">
             <objects>
-                <viewController id="LH6-cQ-6Ny" customClass="RegisterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="register" id="LH6-cQ-6Ny" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ezh-xT-98V"/>
                         <viewControllerLayoutGuide type="bottom" id="SX4-b2-ve9"/>
