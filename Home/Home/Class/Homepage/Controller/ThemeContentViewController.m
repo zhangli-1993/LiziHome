@@ -154,7 +154,7 @@
         self.likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.likeBtn.frame = CGRectMake(80, 5, 60, 30);
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 20, 20)];
-        imageview.image = [UIImage imageNamed:@"like"];
+        imageview.image = [UIImage imageNamed:@"icon_like"];
         [self.likeBtn addSubview:imageview];
         
     }

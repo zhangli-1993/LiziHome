@@ -15,6 +15,9 @@
 #import <SDWebImage/UIButton+WebCache.h>
 #import "KindViewController.h"
 #import "ThemeContentViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+#import <BmobSDK/Bmob.h>
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate,PullingRefreshTableViewDelegate>
 {
      NSString *identifier;
@@ -27,7 +30,7 @@
 @property (nonatomic, strong) NSMutableArray *timeArray;
 @property (nonatomic, strong) NSMutableArray *idArray;
 @property (nonatomic, strong) NSMutableArray *nameArray;
-
+@property (nonatomic, strong) NSDictionary *DataDic;
 @end
 
 @implementation HomeViewController
@@ -62,6 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ThemeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.model = self.allArray[indexPath.section];
+    [cell.likeBtn addTarget:self action:@selector(likeList::) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -125,8 +129,9 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = responseObject;
-        NSDictionary *DataDic = dic[@"data"];
-        for (NSDictionary *dict in DataDic[@"items"]) {
+        self.DataDic = [NSDictionary new];
+        self.DataDic = dic[@"data"];
+        for (NSDictionary *dict in self.DataDic[@"items"]) {
             EveryUpdateModel *model = [[EveryUpdateModel alloc] initWithDictionary:dict];
             [self.allArray addObject:model];
              NSString *timeStr = [LHTools getDataFromString:dict[@"created_at"]];
@@ -141,6 +146,29 @@
     [self.tableView tableViewDidFinishedLoading];
     self.tableView.reachedTheEnd = NO;
 }
+- (void)likeList:(UIButton *)btn :(NSIndexPath *)indexPath{
+    AppDelegate *myApp = [[UIApplication sharedApplication] delegate];
+    if (myApp.isLogin == YES) {
+        BmobObject *likeList = [BmobObject objectWithClassName:@"likeList"];
+        
+        [likeList saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+            if (isSuccessful) {
+                
+                
+            } else {
+                ZLLog(@"收藏不成功%@", error);
+            }
+        }];
+
+    } else {
+        UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        LoginViewController *vc = [login instantiateViewControllerWithIdentifier:@"li"];
+        //UINavigationController *nav = [login instantiateViewControllerWithIdentifier:@"login"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+
 #pragma mark----PullingRefreshTableViewDelegate
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
     

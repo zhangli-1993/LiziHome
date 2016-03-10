@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "EveryUpdateModel.h"
 @interface ThemeTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (nonatomic, strong) EveryUpdateModel *model;
 @end

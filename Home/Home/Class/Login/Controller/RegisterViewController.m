@@ -9,6 +9,9 @@
 #import "RegisterViewController.h"
 #import <BmobSDK/Bmob.h>
 #import "ProgressHUD.h"
+#import "MineViewController.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
 @interface RegisterViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userNumberTF;
 @property (weak, nonatomic) IBOutlet UITextField *codeTF;
@@ -32,6 +35,9 @@
     self.lookSwitch.on = NO;
     [self.lookSwitch addTarget:self action:@selector(lookCode:) forControlEvents:UIControlEventTouchUpInside];
 }
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = YES;
+}
 - (void)lookCode:(UISwitch*)aaa{
     if (aaa.on) {
         self.codeTF.secureTextEntry = NO;
@@ -52,6 +58,19 @@
     [user signUpInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
         if (isSuccessful) {
             [ProgressHUD showSuccess:@"注册成功"];
+            
+            UIStoryboard *mine = [UIStoryboard storyboardWithName:@"MineStoryBoard" bundle:nil];
+            MineViewController *lVC = [mine instantiateViewControllerWithIdentifier:@"mine"];
+            [self.navigationController pushViewController:lVC animated:NO];
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:self.userNumberTF.text forKey:@"name"];
+            [userDefaults setObject:self.codeTF.text forKey:@"password"];
+            [lVC.LoginButton setTitle:self.userNumberTF.text forState:UIControlStateNormal];
+            AppDelegate *myDelegate = [UIApplication sharedApplication].delegate;
+            myDelegate.isLogin = YES;
+            
+            
+            
         } else {
             [ProgressHUD showError:@"注册失败"];
         }
@@ -119,13 +138,12 @@
     }
     //正则表达式
     //判断手机号是否有效
-    if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^1[34578]\\d{9}$"] evaluateWithObject:self.userNumberTF.text]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号码错误" preferredStyle:UIAlertControllerStyleAlert];
+    if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^1[34578]\\d{9}$"] evaluateWithObject:self.userNumberTF.text] && ![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"] evaluateWithObject:self.userNumberTF.text]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号码或邮箱账号错误" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
         UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
         }];
         [alert addAction:alertAction1];
         [alert addAction:alertAction2];
@@ -134,22 +152,7 @@
         return NO;
 
     }
-    //判断邮箱是否存在
-    if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"] evaluateWithObject:self.codeTF.text]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"邮箱账号错误" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alert addAction:alertAction1];
-        [alert addAction:alertAction2];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        return NO;
-
-    }
+    
     
     return YES;
     

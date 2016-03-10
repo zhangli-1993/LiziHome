@@ -8,7 +8,7 @@
         <!--Mine View Controller-->
         <scene sceneID="DDg-7h-Obf">
             <objects>
-                <viewController id="jPS-Ky-v2v" customClass="MineViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mine" id="jPS-Ky-v2v" customClass="MineViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pvb-UD-dv1"/>
                         <viewControllerLayoutGuide type="bottom" id="0Qg-y5-9ee"/>

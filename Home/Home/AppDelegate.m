@@ -15,7 +15,6 @@
 #import "WXApi.h"
 #import <BmobSDK/Bmob.h>
 @interface AppDelegate ()<WeiboSDKDelegate, WXApiDelegate>
-
 @end
 
 @implementation AppDelegate
@@ -24,6 +23,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    NSUserDefaults *userDafault = [NSUserDefaults standardUserDefaults];
+    NSString *name = [userDafault objectForKey:@"name"];
+    if (name == nil) {
+        self.isLogin = NO;
+    } else {
+        self.isLogin = YES;
+    }
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:AppKey];
     [WXApi registerApp:kWXAppID];

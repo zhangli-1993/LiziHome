@@ -37,6 +37,8 @@
 		7A06A4341C8EDE0900EAECEE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A06A4331C8EDE0900EAECEE /* libicucore.tbd */; };
 		7A06A4361C8EDE1800EAECEE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A06A4351C8EDE1800EAECEE /* AVFoundation.framework */; };
 		7A06A4381C8EDE2500EAECEE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A06A4371C8EDE2500EAECEE /* MediaPlayer.framework */; };
+		7A083AE01C8FABAB00605C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A083ADF1C8FABAB00605C35 /* Assets.xcassets */; };
+		7A083AE31C90572400605C35 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A083AE21C90572400605C35 /* DataBaseManager.m */; };
 		7A0C4CBD1C895C3F000E3BEB /* banner in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CBC1C895C3F000E3BEB /* banner */; };
 		7A0C4CBF1C896516000E3BEB /* update in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CBE1C896516000E3BEB /* update */; };
 		7A0C4CC51C89666E000E3BEB /* EveryUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C4CC41C89666E000E3BEB /* EveryUpdateModel.m */; };
@@ -64,7 +66,6 @@
 		7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1367A11C89B7B000B67D70 /* SingleCollectionViewCell.m */; };
 		7AD9B3811C883E8600C35594 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3801C883E8600C35594 /* main.m */; };
 		7AD9B3841C883E8600C35594 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3831C883E8600C35594 /* AppDelegate.m */; };
-		7AD9B3861C883E8600C35594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9B3851C883E8600C35594 /* Assets.xcassets */; };
 		7AD9B3891C883E8600C35594 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9B3871C883E8600C35594 /* LaunchScreen.storyboard */; };
 		7AD9B3A71C88425C00C35594 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3A61C88425C00C35594 /* HomeViewController.m */; };
 		7AD9B3AA1C88429E00C35594 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9B3A91C88429E00C35594 /* SingleViewController.m */; };
@@ -131,6 +132,9 @@
 		7A06A4331C8EDE0900EAECEE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		7A06A4351C8EDE1800EAECEE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7A06A4371C8EDE2500EAECEE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7A083ADF1C8FABAB00605C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A083AE11C90572400605C35 /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		7A083AE21C90572400605C35 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
 		7A0C4CBC1C895C3F000E3BEB /* banner */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = banner; sourceTree = "<group>"; };
 		7A0C4CBE1C896516000E3BEB /* update */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = update; sourceTree = "<group>"; };
 		7A0C4CC31C89666E000E3BEB /* EveryUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryUpdateModel.h; sourceTree = "<group>"; };
@@ -174,7 +178,6 @@
 		7AD9B3801C883E8600C35594 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7AD9B3821C883E8600C35594 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AD9B3831C883E8600C35594 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7AD9B3851C883E8600C35594 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AD9B3881C883E8600C35594 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AD9B38A1C883E8600C35594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AD9B3A51C88425C00C35594 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -397,8 +400,8 @@
 				7AD9B3821C883E8600C35594 /* AppDelegate.h */,
 				7AD9B3831C883E8600C35594 /* AppDelegate.m */,
 				7AD9B3901C8841D000C35594 /* Class */,
-				7AD9B3851C883E8600C35594 /* Assets.xcassets */,
 				7AD9B3871C883E8600C35594 /* LaunchScreen.storyboard */,
+				7A083ADF1C8FABAB00605C35 /* Assets.xcassets */,
 				7AD9B38A1C883E8600C35594 /* Info.plist */,
 				7AD9B37F1C883E8600C35594 /* Supporting Files */,
 			);
@@ -642,6 +645,8 @@
 				7A0C4CCF1C89708B000E3BEB /* LHTools.m */,
 				7A101A271C8AD47B00500069 /* UIViewController+BackAction.h */,
 				7A101A281C8AD47B00500069 /* UIViewController+BackAction.m */,
+				7A083AE11C90572400605C35 /* DataBaseManager.h */,
+				7A083AE21C90572400605C35 /* DataBaseManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -725,10 +730,10 @@
 				7A101A251C8AC79400500069 /* kind in Resources */,
 				7A0C4CBD1C895C3F000E3BEB /* banner in Resources */,
 				7A06A3E91C8E6AB600EAECEE /* WeiboSDK.bundle in Resources */,
+				7A083AE01C8FABAB00605C35 /* Assets.xcassets in Resources */,
 				7A06A3D81C8E63A500EAECEE /* ProgressHUD.bundle in Resources */,
 				7A0C631C1C8BE38E00AD5D11 /* themeContent in Resources */,
 				7A06A4291C8EDD4600EAECEE /* Bmob_iOS_SDK更新历史.txt in Resources */,
-				7AD9B3861C883E8600C35594 /* Assets.xcassets in Resources */,
 				7AD9B3CC1C8870D000C35594 /* ThemeTableViewCell.xib in Resources */,
 				7AD9B3BC1C88576700C35594 /* MineStoryBoard.storyboard in Resources */,
 				7A06A4041C8EA62B00EAECEE /* 002.jpg in Resources */,
@@ -827,6 +832,7 @@
 				7A101A0F1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				7AF63AB81C8C28F70006FB88 /* VOIndicatorAnimation.m in Sources */,
 				7A1367A21C89B7B000B67D70 /* SingleCollectionViewCell.m in Sources */,
+				7A083AE31C90572400605C35 /* DataBaseManager.m in Sources */,
 				7AD9B3CB1C8870D000C35594 /* ThemeTableViewCell.m in Sources */,
 				7AF63ABA1C8C28F70006FB88 /* VOSegmentedControl.m in Sources */,
 				7A06A4121C8EB0CA00EAECEE /* LPLevelView.m in Sources */,

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MineViewController : UIViewController
+@property (nonatomic, strong) UIButton *LoginButton;
+
 
 @end

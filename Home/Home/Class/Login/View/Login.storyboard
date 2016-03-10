@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hfO-Ld-DrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -40,11 +40,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ACM-eL-Hmh">
-                                <rect key="frame" x="126" y="180" width="188" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWb-Ho-M24">
                                 <rect key="frame" x="61" y="244" width="253" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -57,6 +52,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="忘记密码？"/>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ACM-eL-Hmh">
+                                <rect key="frame" x="126" y="180" width="188" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -74,10 +74,12 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="codeTF" destination="ACM-eL-Hmh" id="ofk-ja-WWF"/>
                         <outlet property="forgetBtn" destination="OAy-kq-AdV" id="EN7-fg-bNj"/>
                         <outlet property="label1" destination="psr-2V-kPV" id="kwi-Rk-a2a"/>
                         <outlet property="label2" destination="rW0-9E-yGA" id="ebY-V5-DJ5"/>
                         <outlet property="loginBtn" destination="AWb-Ho-M24" id="Jxj-gp-gYd"/>
+                        <outlet property="nameTF" destination="yDF-pa-j0N" id="5rB-lB-wgc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjz-Hm-J04" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,25 +143,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAC-on-9wn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1386.5" y="348.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eRS-TZ-haG">
-            <objects>
-                <navigationController storyboardIdentifier="login" automaticallyAdjustsScrollViewInsets="NO" id="hfO-Ld-DrT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V1U-Wn-rIH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5Tb-ij-hZD" kind="relationship" relationship="rootViewController" id="p8f-g5-n8s"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QTC-Lb-9Ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="524.5" y="348.5"/>
         </scene>
     </scenes>
 </document>

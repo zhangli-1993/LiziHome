@@ -15,13 +15,15 @@
 #import "WeiboSDK.h"
 #import "ShareView.h"
 #import "ScoreViewController.h"
+#import "AppDelegate.h"
+#import <BmobSDK/Bmob.h>
 @interface MineViewController ()<UITableViewDataSource, UITableViewDelegate, WBHttpRequestDelegate>
 @property (nonatomic, strong) UITableView *tabelView;
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) UILabel *nikeNameLabel;
-@property (nonatomic, strong) UIButton *LoginButton;
 @property (nonatomic, strong) ShareView *shareView;
+@property (nonatomic, strong) AppDelegate *app;
 
 @end
 
@@ -31,20 +33,40 @@
     [super viewDidLoad];
     self.title = @"我";
     self.navigationController.navigationBar.barTintColor = kColor;
-    self.imageArray = @[@"clear", @"return", @"share", @"user", @"now"];
-     self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
+ 
+    self.app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    if (self.app.isLogin == NO) {
+        self.imageArray = @[@"clear",@"icon_like", @"return", @"share", @"user", @"now"];
+        self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
+        [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
+    } else {
+        self.imageArray = @[@"clear",@"icon_like", @"return", @"share", @"user", @"now", @"heart"];
+        self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", @"退出登录",nil];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSString *name = [userDefault objectForKey:@"name"];
+        [self.LoginButton setTitle:name forState:UIControlStateNormal];
+        [self.tabelView reloadData];
+    }
     [self setHeaderView];
     [self.view addSubview:self.tabelView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self.tabelView reloadData];
+    self.tabBarController.tabBar.hidden = NO;
+    [self.navigationController.navigationItem setHidesBackButton:YES animated:NO];
+    [self.navigationItem setHidesBackButton:YES];
+
     SDImageCache *cache = [SDImageCache sharedImageCache];
     NSInteger cacheSize = [cache getSize];
     NSString *cacheStr = [NSString stringWithFormat:@"清除缓存(%.2fM)", (CGFloat)cacheSize / 1024 / 1024];
     [self.titleArray replaceObjectAtIndex:0 withObject:cacheStr];
     NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tabelView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+    [self reloadInputViews];
+    [self.tabelView reloadData];
+
+ 
 }
 #pragma mark---UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -57,7 +79,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ident];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.row]];
     cell.textLabel.text = self.titleArray[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -75,35 +96,66 @@
             
         }
             break;
-        case 1:
+            case 1:
+        {
+            
+        }
+            break;
+        case 2:
         {
             [self sendEmail];
         }
             
             break;
-        case 2:
+        case 3:
         {
             [self share];
             
         }
             
             break;
-        case 3:
+        case 4:
         {
 //            NSString *str = [NSString stringWithFormat:
 //                             @"itms-apps://itunes.apple.com/app"];
 //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
             ScoreViewController *sVC = [[ScoreViewController alloc] init];
           
-            [self.navigationController pushViewController:sVC animated:YES];
+            [self.navigationController presentViewController:sVC animated:YES completion:nil];
         }
             
             break;
-        case 4:
+        case 5:
         {
             //检测当前版本
             [ProgressHUD show:@"正在检测中..."];
             [self performSelector:@selector(checkVerson) withObject:nil afterDelay:2.0];
+        }
+            break;
+        case 6:
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确定要退出登录？" preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+               
+            }];
+            UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [BmobUser logout];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                //移除UserDefaults中存储的用户信息
+                [userDefaults removeObjectForKey:@"name"];
+                [userDefaults removeObjectForKey:@"password"];
+               [userDefaults synchronize];
+    
+                self.app.isLogin = NO;
+                self.imageArray = @[@"clear",@"icon_like", @"return", @"share", @"user", @"now"];
+                self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
+                [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
+                [self.tabelView reloadData];
+                
+            }];
+            [alert addAction:alertAction1];
+            [alert addAction:alertAction2];
+            [self presentViewController:alert animated:YES completion:nil];
         }
             break;
         default:
@@ -119,10 +171,14 @@
 
 #pragma mark---自定义
 - (void)loginAction{
+    if (self.app.isLogin == YES) {
+        
+    } else {
     UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UINavigationController *nav = [login instantiateViewControllerWithIdentifier:@"login"];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
-    
+    LoginViewController *vc = [login instantiateViewControllerWithIdentifier:@"li"];
+    //UINavigationController *nav = [login instantiateViewControllerWithIdentifier:@"login"];
+    [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 - (void)sendEmail{
     Class mailClass = NSClassFromString(@"MFMailComposeViewController");
@@ -182,25 +238,30 @@
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 200)];
     headView.backgroundColor = kColor;
     self.tabelView.tableHeaderView = headView;
-    self.LoginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.LoginButton.frame=CGRectMake(kWidth / 4, 45, kWidth/2, kWidth/6);
-    self.LoginButton.layer.cornerRadius=5;
-    self.LoginButton.clipsToBounds=YES;
-    [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
-    [self.LoginButton setTitleColor:kColor forState:UIControlStateNormal];
-    self.LoginButton.backgroundColor=[UIColor whiteColor];
-    [self.LoginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
+  
     [headView addSubview:self.LoginButton];
     [headView addSubview:self.nikeNameLabel];
 }
 
 #pragma mark---懒加载
+- (UIButton *)LoginButton{
+    if (_LoginButton == nil) {
+    self.LoginButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.LoginButton.frame=CGRectMake(kWidth / 4, 45, kWidth/2, kWidth/6);
+    self.LoginButton.layer.cornerRadius=5;
+    self.LoginButton.clipsToBounds=YES;
+    [self.LoginButton setTitleColor:kColor forState:UIControlStateNormal];
+    self.LoginButton.backgroundColor=[UIColor whiteColor];
+    [self.LoginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _LoginButton;
+}
 - (UITableView *)tabelView{
     if (_tabelView == nil) {
         self.tabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 44) style:UITableViewStylePlain];
         self.tabelView.dataSource = self;
         self.tabelView.delegate = self;
-        self.tabelView.rowHeight = 70;
+        self.tabelView.rowHeight = 60;
     }
     return _tabelView;
 }
