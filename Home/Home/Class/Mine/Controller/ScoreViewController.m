@@ -34,10 +34,20 @@
     label.text = @"期待您的评分";
     label.textColor = kColor;
     label.font = [UIFont systemFontOfSize:19.0];
+    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.frame = CGRectMake(100, 380, kWidth - 200, 40);
+    back.backgroundColor = kColor;
+    [back setTitle:@"返回" forState:UIControlStateNormal];
+    [back setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:label];
     [self.view addSubview:lView];
+    [self.view addSubview:back];
 
     // Do any additional setup after loading the view.
+}
+- (void)back{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

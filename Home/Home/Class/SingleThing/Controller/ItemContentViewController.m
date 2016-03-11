@@ -39,7 +39,13 @@ UITableViewDelegate, SDCycleScrollViewDelegate, UIWebViewDelegate>
     [self setHeadView];
     [self requestModel];
 }
+
+- (void)back{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
 #pragma mark---自定义

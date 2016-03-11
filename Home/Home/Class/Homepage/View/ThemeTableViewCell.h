@@ -11,4 +11,5 @@
 @interface ThemeTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (nonatomic, strong) EveryUpdateModel *model;
+- (void)likeList:(UIButton *)btn :(EveryUpdateModel *)model;
 @end

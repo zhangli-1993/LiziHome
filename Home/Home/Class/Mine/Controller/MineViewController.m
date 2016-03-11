@@ -17,6 +17,7 @@
 #import "ScoreViewController.h"
 #import "AppDelegate.h"
 #import <BmobSDK/Bmob.h>
+#import "CollectionViewController.h"
 @interface MineViewController ()<UITableViewDataSource, UITableViewDelegate, WBHttpRequestDelegate>
 @property (nonatomic, strong) UITableView *tabelView;
 @property (nonatomic, strong) NSMutableArray *titleArray;
@@ -36,12 +37,12 @@
  
     self.app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     if (self.app.isLogin == NO) {
-        self.imageArray = @[@"clear",@"icon_like", @"return", @"share", @"user", @"now"];
+        self.imageArray = @[@"clear",@"collect", @"return", @"share", @"user", @"now"];
         self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
         [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
     } else {
-        self.imageArray = @[@"clear",@"icon_like", @"return", @"share", @"user", @"now", @"heart"];
-        self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", @"退出登录",nil];
+        self.imageArray = @[@"clear",@"collect", @"return", @"share", @"user", @"now", @"heart"];
+        self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", @"退出登录",nil];
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSString *name = [userDefault objectForKey:@"name"];
         [self.LoginButton setTitle:name forState:UIControlStateNormal];
@@ -52,6 +53,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
     [self.tabelView reloadData];
     self.tabBarController.tabBar.hidden = NO;
     [self.navigationController.navigationItem setHidesBackButton:YES animated:NO];
@@ -96,11 +99,14 @@
             
         }
             break;
-            case 1:
+        case 1:
         {
-            
+            CollectionViewController *cVC = [[CollectionViewController alloc] init];
+            [self.navigationController pushViewController:cVC animated:YES];
         }
+            
             break;
+        
         case 2:
         {
             [self sendEmail];
@@ -147,7 +153,7 @@
                [userDefaults synchronize];
     
                 self.app.isLogin = NO;
-                self.imageArray = @[@"clear",@"icon_like", @"return", @"share", @"user", @"now"];
+                self.imageArray = @[@"clear",@"collect", @"return", @"share", @"user", @"now"];
                 self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
                 [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
                 [self.tabelView reloadData];
@@ -176,7 +182,6 @@
     } else {
     UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     LoginViewController *vc = [login instantiateViewControllerWithIdentifier:@"li"];
-    //UINavigationController *nav = [login instantiateViewControllerWithIdentifier:@"login"];
     [self.navigationController pushViewController:vc animated:YES];
     }
 }

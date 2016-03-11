@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EveryUpdateModel.h"
 @interface DataBaseManager : NSObject
+@property (nonatomic, copy) NSString *name;
 + (DataBaseManager *)sharedInstance;
 #pragma mark--数据库基础操作
 //创建数据库
@@ -19,8 +20,8 @@
 - (void)createDataBaseTable;
 //关闭数据库
 - (void)closeDataBase;
-- (void)insertIntoNew:(EveryUpdateModel *)model;
-- (void)deleteModel;
-- (EveryUpdateModel *)selectCityModel;
-
+- (void)insertIntoCollect:(NSDictionary *)dic withNumber:(NSInteger)num;
+- (void)deleteWithNum:(NSInteger)num;
+- (NSMutableArray *)selectAllCollect;
+- (NSMutableArray *)selectAllCollectWithNum:(NSInteger)num;
 @end

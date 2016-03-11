@@ -12,7 +12,10 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "LoginViewController.h"
 #import "ShareView.h"
+#import "DataBaseManager.h"
+#import "AppDelegate.h"
 @interface ThemeContentViewController ()<UIWebViewDelegate>
+
 @property (nonatomic, strong) NSString *idstr1;
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) UIScrollView *scrollView;
@@ -24,6 +27,7 @@
 @property (strong, nonatomic) UILabel *likeLabel;
 @property (strong, nonatomic) UILabel *shareLabel;
 @property (nonatomic, strong) ShareView *shareView;
+@property (nonatomic, strong) NSDictionary *dataDic;
 
 
 @end
@@ -37,20 +41,26 @@
     [self.scrollView addSubview:self.headView];
     [self.scrollView addSubview:self.titleLabel];
     [self.scrollView addSubview:self.webView];
-    [self.likeBtn addSubview:self.likeLabel];
-    [self.shareBtn addSubview:self.shareLabel];
+    DataBaseManager *manager = [DataBaseManager sharedInstance];
+    NSMutableArray *array = [manager selectAllCollectWithNum:[self.idStr integerValue]];
+    if (array.count > 0) {
+        [self.likeBtn setTitle:@"取消收藏" forState:UIControlStateNormal];
+        self.likeBtn.tag = 110;
+    } else {
+        [self.likeBtn setTitle:@"收藏"forState:UIControlStateNormal];
+        self.likeBtn.tag = 111;
+    }
     [self.footView addSubview:self.likeBtn];
     [self.footView addSubview:self.shareBtn];
     [self.view addSubview:self.footView];
     [self.view addSubview:self.scrollView];
-    [self requestModel];
 }
 - (void)viewWillAppear:(BOOL)animated{
-    animated = NO;
+    [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-
-    [self.webView reload];
     [self requestModel];
+    [self.webView reload];
+
 
 
 }
@@ -61,16 +71,17 @@
     [manager GET:[NSString stringWithFormat:@"%@%@", kThemeContent, self.idStr] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.dataDic = [NSDictionary new];
         NSDictionary *dic = responseObject;
-        NSDictionary *dataDic = dic[@"data"];
-        [self.headView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"cover_image_url"]]];
-        self.titleLabel.text = dataDic[@"title"];
-        [self.webView loadHTMLString:dataDic[@"content_html"] baseURL:[NSURL URLWithString:dataDic[@"content_url"]]];
+        self.dataDic = dic[@"data"];
+        [self.headView sd_setImageWithURL:[NSURL URLWithString:self.dataDic[@"cover_image_url"]]];
+        self.titleLabel.text = self.dataDic[@"title"];
+        [self.webView loadHTMLString:self.dataDic[@"content_html"] baseURL:[NSURL URLWithString:self.dataDic[@"content_url"]]];
         
-        self.likeLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"likes_count"]];
-        self.shareLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"shares_count"]];
+        self.likeLabel.text = [NSString stringWithFormat:@"%@",self.dataDic[@"likes_count"]];
+        self.shareLabel.text = [NSString stringWithFormat:@"%@",self.dataDic[@"shares_count"]];
         ZLLog(@"数据请求成功");
-        [self reloadInputViews];
+//        [self reloadInputViews];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         ZLLog(@"数据请求失败");
@@ -82,7 +93,7 @@
     UIScrollView *scrollView1 = [arr objectAtIndex:0];
     self.webView.frame = CGRectMake(0, kWidth / 1.6 + 60, kWidth, [scrollView1 contentSize].height);
     self.scrollView.contentSize = CGSizeMake(kWidth, [scrollView1 contentSize].height + kWidth / 1.6 + 60);
-    [self reloadInputViews];
+//    [self reloadInputViews];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -94,8 +105,9 @@
         case UIWebViewNavigationTypeLinkClicked:
         {
             ItemContentViewController *good = [[ItemContentViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:good];
             good.idstr = string;
-            [self.navigationController pushViewController:good animated:YES];
+            [self presentViewController:nav animated:YES completion:nil];
         }
             break;
             
@@ -106,6 +118,26 @@
 }
 - (void)share{
     self.shareView = [[ShareView alloc] init];
+}
+
+- (void)like:(UIButton *)btn{
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    if (myDelegate.isLogin == NO) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"要登录才可以收藏哦" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+    DataBaseManager *manager= [DataBaseManager sharedInstance];
+    if (btn.tag == 111) {
+        [manager insertIntoCollect:self.dataDic withNumber:[self.idStr integerValue]];
+        [btn setTitle:@"取消收藏" forState:UIControlStateNormal];
+        btn.tag = 110;
+    } else {
+        [manager deleteWithNum:[self.idStr integerValue]];
+        [btn setTitle:@"收藏" forState:UIControlStateNormal];
+        btn.tag = 111;
+    }
+}
+    
 }
 #pragma mark---懒加载
 - (UIWebView *)webView{
@@ -145,17 +177,22 @@
 - (UIView *)footView{
     if (_footView == nil) {
         self.footView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeight - 40, kWidth, 40)];
-        self.footView.backgroundColor = [UIColor whiteColor];
+        self.footView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.3];
     }
     return _footView;
 }
 - (UIButton *)likeBtn{
     if (_likeBtn == nil) {
         self.likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.likeBtn.frame = CGRectMake(80, 5, 60, 30);
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 20, 20)];
-        imageview.image = [UIImage imageNamed:@"icon_like"];
-        [self.likeBtn addSubview:imageview];
+        self.likeBtn.frame = CGRectMake(60, 5, (kWidth - 180) / 2, 30);
+        self.likeBtn.backgroundColor = kColor;
+        self.likeBtn.layer.cornerRadius = 5;
+        self.likeBtn.clipsToBounds = YES;
+ 
+        self.likeBtn.titleLabel.font = [UIFont systemFontOfSize:18.0];
+        self.likeBtn.titleLabel.textColor = [UIColor whiteColor];
+
+        [self.likeBtn addTarget:self action:@selector(like:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _likeBtn;
@@ -163,32 +200,24 @@
 - (UIButton *)shareBtn{
     if (_shareBtn == nil) {
         self.shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.shareBtn.frame = CGRectMake(kWidth - 140, 5, 60, 30);
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 20, 20)];
-        imageview.image = [UIImage imageNamed:@"leaf"];
+        self.shareBtn.frame = CGRectMake(kWidth / 2 + 30, 5, (kWidth - 180) / 2, 30);
+//        [self.shareBtn setImage:[UIImage imageNamed:@"leaf"] forState:UIControlStateNormal];
+//        self.shareBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, self.shareBtn.frame.size.width * 2 / 3);
+        [self.shareBtn setTitle:@"分享"forState:UIControlStateNormal];
+        self.shareBtn.backgroundColor = kColor;
+        self.shareBtn.layer.cornerRadius = 5;
+        self.shareBtn.clipsToBounds = YES;
+       // self.shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -self.shareBtn.frame.size.width * 1 / 3, 0, 0);
+        self.shareBtn.titleLabel.font = [UIFont systemFontOfSize:18.0];
+        self.shareBtn.titleLabel.textColor = [UIColor whiteColor];
         [self.shareBtn addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
-        [self.shareBtn addSubview:imageview];
+   
         
     }
     return _shareBtn;
 
 }
-- (UILabel *)likeLabel{
-    if (_likeLabel == nil) {
-        self.likeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 40, 30)];
-        self.likeLabel.font = [UIFont systemFontOfSize:15.0];
-        self.likeLabel.textColor = [UIColor grayColor];
-    }
-    return _likeLabel;
-}
-- (UILabel *)shareLabel{
-    if (_shareLabel == nil) {
-        self.shareLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 40, 30)];
-        self.shareLabel.font = [UIFont systemFontOfSize:15.0];
-        self.shareLabel.textColor = [UIColor grayColor];
-    }
-    return _shareLabel;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

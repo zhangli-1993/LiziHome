@@ -36,6 +36,8 @@
     [self.lookSwitch addTarget:self action:@selector(lookCode:) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
     self.tabBarController.tabBar.hidden = YES;
 }
 - (void)lookCode:(UISwitch*)aaa{
@@ -58,7 +60,6 @@
     [user signUpInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
         if (isSuccessful) {
             [ProgressHUD showSuccess:@"注册成功"];
-            
             UIStoryboard *mine = [UIStoryboard storyboardWithName:@"MineStoryBoard" bundle:nil];
             MineViewController *lVC = [mine instantiateViewControllerWithIdentifier:@"mine"];
             [self.navigationController pushViewController:lVC animated:NO];

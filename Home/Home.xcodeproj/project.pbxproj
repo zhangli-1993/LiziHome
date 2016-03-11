@@ -50,6 +50,8 @@
 		7A0C4CD81C899782000E3BEB /* single in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C4CD71C899782000E3BEB /* single */; };
 		7A0C631A1C8BE12600AD5D11 /* ThemeContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C63191C8BE12600AD5D11 /* ThemeContentViewController.m */; };
 		7A0C631C1C8BE38E00AD5D11 /* themeContent in Resources */ = {isa = PBXBuildFile; fileRef = 7A0C631B1C8BE38E00AD5D11 /* themeContent */; };
+		7A0D4C9B1C918E9C00073586 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D4C9A1C918E9C00073586 /* CollectionViewController.m */; };
+		7A0D4C9E1C9196F700073586 /* Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D4C9D1C9196F700073586 /* Collect.m */; };
 		7A101A0F1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */; };
 		7A101A101C8A817A00500069 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A101A0E1C8A817A00500069 /* UIScrollView+SVPullToRefresh.m */; };
 		7A101A121C8A889900500069 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A101A111C8A889900500069 /* UIKit.framework */; };
@@ -151,6 +153,10 @@
 		7A0C63181C8BE12600AD5D11 /* ThemeContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeContentViewController.h; sourceTree = "<group>"; };
 		7A0C63191C8BE12600AD5D11 /* ThemeContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeContentViewController.m; sourceTree = "<group>"; };
 		7A0C631B1C8BE38E00AD5D11 /* themeContent */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = themeContent; sourceTree = "<group>"; };
+		7A0D4C991C918E9C00073586 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		7A0D4C9A1C918E9C00073586 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		7A0D4C9C1C9196F700073586 /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
+		7A0D4C9D1C9196F700073586 /* Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collect.m; sourceTree = "<group>"; };
 		7A101A0A1C8A817A00500069 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		7A101A0B1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		7A101A0C1C8A817A00500069 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -567,6 +573,8 @@
 				7AD9B3B71C88523100C35594 /* MineViewController.m */,
 				7A06A4131C8EB11E00EAECEE /* ScoreViewController.h */,
 				7A06A4141C8EB11E00EAECEE /* ScoreViewController.m */,
+				7A0D4C991C918E9C00073586 /* CollectionViewController.h */,
+				7A0D4C9A1C918E9C00073586 /* CollectionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -574,6 +582,8 @@
 		7AD9B39F1C8841D000C35594 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A0D4C9C1C9196F700073586 /* Collect.h */,
+				7A0D4C9D1C9196F700073586 /* Collect.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -818,12 +828,14 @@
 				7A101A231C8ABE2D00500069 /* KindViewController.m in Sources */,
 				7AE3F2111C8D1B050001B73E /* RegisterViewController.m in Sources */,
 				7A0C4CC51C89666E000E3BEB /* EveryUpdateModel.m in Sources */,
+				7A0D4C9E1C9196F700073586 /* Collect.m in Sources */,
 				7AD9B3AA1C88429E00C35594 /* SingleViewController.m in Sources */,
 				7AF63AB91C8C28F70006FB88 /* VOSegment.m in Sources */,
 				7AD9B3A71C88425C00C35594 /* HomeViewController.m in Sources */,
 				7AE3F2141C8D94210001B73E /* ItemContentViewController.m in Sources */,
 				7A0C4CCD1C896BEA000E3BEB /* PullingRefreshTableView.m in Sources */,
 				7AF63AB71C8C28F70006FB88 /* VOContentLayer.m in Sources */,
+				7A0D4C9B1C918E9C00073586 /* CollectionViewController.m in Sources */,
 				7A101A101C8A817A00500069 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				7A101A201C8A928600500069 /* ClassifyCollectionViewCell.m in Sources */,
 				7A06A4151C8EB11E00EAECEE /* ScoreViewController.m in Sources */,
