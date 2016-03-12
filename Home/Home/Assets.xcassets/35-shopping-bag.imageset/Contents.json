@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "35-shopping-bag@2x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "leaf@2x.png",
       "scale" : "2x"
     },
     {

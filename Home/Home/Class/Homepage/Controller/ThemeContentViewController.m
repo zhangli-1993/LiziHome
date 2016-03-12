@@ -59,6 +59,7 @@
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
     [self requestModel];
+    //[self reloadInputViews];
     [self.webView reload];
 
 
@@ -81,7 +82,6 @@
         self.likeLabel.text = [NSString stringWithFormat:@"%@",self.dataDic[@"likes_count"]];
         self.shareLabel.text = [NSString stringWithFormat:@"%@",self.dataDic[@"shares_count"]];
         ZLLog(@"数据请求成功");
-//        [self reloadInputViews];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         ZLLog(@"数据请求失败");
@@ -93,7 +93,6 @@
     UIScrollView *scrollView1 = [arr objectAtIndex:0];
     self.webView.frame = CGRectMake(0, kWidth / 1.6 + 60, kWidth, [scrollView1 contentSize].height);
     self.scrollView.contentSize = CGSizeMake(kWidth, [scrollView1 contentSize].height + kWidth / 1.6 + 60);
-//    [self reloadInputViews];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -105,9 +104,9 @@
         case UIWebViewNavigationTypeLinkClicked:
         {
             ItemContentViewController *good = [[ItemContentViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:good];
+            
             good.idstr = string;
-            [self presentViewController:nav animated:YES completion:nil];
+            [self.navigationController pushViewController:good animated:YES];
         }
             break;
             
@@ -155,7 +154,7 @@
 }
 - (UIScrollView *)scrollView{
     if (_scrollView == nil) {
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight - 40)];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, kWidth, kHeight - 84)];
         self.scrollView.contentSize = CGSizeMake(kWidth, 10000);
     }
     return _scrollView;
@@ -201,13 +200,12 @@
     if (_shareBtn == nil) {
         self.shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.shareBtn.frame = CGRectMake(kWidth / 2 + 30, 5, (kWidth - 180) / 2, 30);
-//        [self.shareBtn setImage:[UIImage imageNamed:@"leaf"] forState:UIControlStateNormal];
-//        self.shareBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, self.shareBtn.frame.size.width * 2 / 3);
+
         [self.shareBtn setTitle:@"分享"forState:UIControlStateNormal];
         self.shareBtn.backgroundColor = kColor;
         self.shareBtn.layer.cornerRadius = 5;
         self.shareBtn.clipsToBounds = YES;
-       // self.shareBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -self.shareBtn.frame.size.width * 1 / 3, 0, 0);
+  
         self.shareBtn.titleLabel.font = [UIFont systemFontOfSize:18.0];
         self.shareBtn.titleLabel.textColor = [UIColor whiteColor];
         [self.shareBtn addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];

@@ -37,7 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"栗子家居";
+    self.navigationItem.title = @"栗子家居";
     self.navigationController.navigationBar.barTintColor = kColor;
     identifier = @"theme";
     offset = 0;
@@ -67,11 +67,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ThemeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.model = self.allArray[indexPath.section];
-    if (cell.likeBtn.tag == 111) {
-        [cell likeList:cell.likeBtn :cell.model];
-
-    }
-     return cell;
+    return cell;
 }
 
 

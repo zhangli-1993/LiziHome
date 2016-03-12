@@ -40,9 +40,9 @@ UITableViewDelegate, SDCycleScrollViewDelegate, UIWebViewDelegate>
     [self requestModel];
 }
 
-- (void)back{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)back{
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

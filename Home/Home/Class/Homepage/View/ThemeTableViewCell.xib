@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,23 +15,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqs-9m-M3d">
-                        <rect key="frame" x="5" y="0.0" width="365" height="200"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqs-9m-M3d">
+                        <rect key="frame" x="5" y="0.0" width="365" height="199"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVu-PN-wrP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVu-PN-wrP">
                         <rect key="frame" x="32" y="150" width="310" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="49" id="Fdu-Ip-RRi"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz1-NZ-eTi">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz1-NZ-eTi">
                         <rect key="frame" x="299" y="8" width="61" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="61" id="CN5-Ko-Zd6"/>
+                            <constraint firstAttribute="height" constant="27" id="EqT-fb-AyA"/>
+                        </constraints>
                         <color key="tintColor" red="1" green="0.56248564759999997" blue="0.49256468269999998" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="Qqs-9m-M3d" secondAttribute="bottom" id="1xX-yf-1tk"/>
+                    <constraint firstItem="eVu-PN-wrP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="4fs-iB-LIl"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="eVu-PN-wrP" secondAttribute="bottom" id="58M-7X-bKY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eVu-PN-wrP" secondAttribute="trailing" constant="25" id="6Te-6b-BZR"/>
+                    <constraint firstItem="Qqs-9m-M3d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9vr-Gf-YEV"/>
+                    <constraint firstItem="Qqs-9m-M3d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-3" id="GbV-2v-wL8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Qqs-9m-M3d" secondAttribute="trailing" constant="-3" id="HXW-xt-JnP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Iz1-NZ-eTi" secondAttribute="trailing" constant="7" id="uGo-u5-qZV"/>
+                    <constraint firstItem="Iz1-NZ-eTi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="zYx-z5-paE"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imageview" destination="Qqs-9m-M3d" id="QfR-0l-qXl"/>

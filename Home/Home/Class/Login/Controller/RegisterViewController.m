@@ -57,6 +57,7 @@
     BmobUser *user = [[BmobUser alloc] init];
     [user setUsername:self.userNumberTF.text];
     [user setPassword:self.codeTF.text];
+    [user setMobilePhoneNumber:self.userNumberTF.text];
     [user signUpInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
         if (isSuccessful) {
             [ProgressHUD showSuccess:@"注册成功"];
@@ -80,7 +81,7 @@
 - (BOOL)ckeckout{
     if (self.userNumberTF.text.length <= 0 || [self.userNumberTF.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
         //alert提示框
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"用户名不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号码不能为空" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
@@ -123,8 +124,8 @@
         
         return NO;
     }
-    if (self.codeTF.text.length < 8) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"密码长度不能少于8位" preferredStyle:UIAlertControllerStyleAlert];
+    if (self.codeTF.text.length < 6) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"密码长度不能少于6位" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];
@@ -139,8 +140,8 @@
     }
     //正则表达式
     //判断手机号是否有效
-    if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^1[34578]\\d{9}$"] evaluateWithObject:self.userNumberTF.text] && ![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"] evaluateWithObject:self.userNumberTF.text]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号码或邮箱账号错误" preferredStyle:UIAlertControllerStyleAlert];
+    if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^1[34578]\\d{9}$"] evaluateWithObject:self.userNumberTF.text]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"手机号码错误" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }];

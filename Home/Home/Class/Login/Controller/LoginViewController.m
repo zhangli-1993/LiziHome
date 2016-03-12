@@ -10,6 +10,7 @@
 #import <BmobSDK/Bmob.h>
 #import "MineViewController.h"
 #import "AppDelegate.h"
+#import "FindViewController.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
@@ -33,6 +34,7 @@
     self.loginBtn.backgroundColor = kColor;
     
     [self.loginBtn addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    [self.forgetBtn addTarget:self action:@selector(findAction) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -70,11 +72,11 @@
            [self presentViewController:alert animated:YES completion:nil];
        }
    }];
-    
-
-    
 }
-
+- (void)findAction{
+    FindViewController *fVC = [[FindViewController alloc] init];
+    [self.navigationController pushViewController:fVC animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {

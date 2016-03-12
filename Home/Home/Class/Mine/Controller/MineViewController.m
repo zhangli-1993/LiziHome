@@ -37,11 +37,11 @@
  
     self.app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     if (self.app.isLogin == NO) {
-        self.imageArray = @[@"clear",@"collect", @"return", @"share", @"user", @"now"];
+        self.imageArray = @[@"clear",@"shou", @"return", @"share", @"user", @"now"];
         self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
         [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
     } else {
-        self.imageArray = @[@"clear",@"collect", @"return", @"share", @"user", @"now", @"heart"];
+        self.imageArray = @[@"clear",@"shou", @"return", @"share", @"user", @"now", @"out"];
         self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存", @"我的收藏",@"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", @"退出登录",nil];
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSString *name = [userDefault objectForKey:@"name"];
@@ -153,7 +153,7 @@
                [userDefaults synchronize];
     
                 self.app.isLogin = NO;
-                self.imageArray = @[@"clear",@"collect", @"return", @"share", @"user", @"now"];
+                self.imageArray = @[@"clear",@"shou", @"return", @"share", @"user", @"now"];
                 self.titleArray = [NSMutableArray arrayWithObjects:@"清除缓存",@"我的收藏", @"用户反馈", @"分享给好友", @"给我评分", @"当前版本(1.0)", nil];
                 [self.LoginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
                 [self.tabelView reloadData];
